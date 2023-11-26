@@ -1,9 +1,8 @@
 import '../styles/main.css';
 import '../styles/tailwind.css';
+import './views/components/nav-bar';
+import Alpine from 'alpinejs';
 
-const container = document.querySelector('body');
-container.innerHTML = `
-    <h1 class="text-3xl font-bold">
-        NyokLapor
-    </h1>
-`;
+window.Alpine = Alpine;
+
+Alpine.start();
