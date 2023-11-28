@@ -572,40 +572,36 @@ video {
   position: fixed;
 }
 
-.absolute {
-  position: absolute;
+.bottom-\[-100\%\] {
+  bottom: -100%;
 }
 
-.bottom-0 {
-  bottom: 0px;
-}
-
-.bottom-24 {
-  bottom: 6rem;
+.bottom-\[1\%\] {
+  bottom: 1%;
 }
 
 .left-0 {
   left: 0px;
 }
 
-.left-1\/2 {
-  left: 50%;
-}
-
 .right-0 {
   right: 0px;
 }
 
-.order-1 {
-  order: 1;
+.top-0 {
+  top: 0px;
 }
 
-.order-2 {
-  order: 2;
+.top-\[-100\%\] {
+  top: -100%;
 }
 
-.order-3 {
-  order: 3;
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
 }
 
 .mx-auto {
@@ -615,6 +611,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -641,21 +641,12 @@ video {
   flex-grow: 1;
 }
 
-.-translate-x-1\/2 {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.cursor-pointer {
+  cursor: pointer;
 }
 
-.scale-100 {
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.scale-90 {
-  --tw-scale-x: .9;
-  --tw-scale-y: .9;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -680,6 +671,10 @@ video {
 
 .gap-16 {
   gap: 4rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .rounded-full {
@@ -716,8 +711,34 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-opacity-20 {
-  --tw-bg-opacity: 0.2;
+.bg-red-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.bg-blue-950 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 37 84 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-green-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.bg-red-950 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 10 10 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-5 {
@@ -769,6 +790,11 @@ video {
   line-height: 2rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -806,64 +832,51 @@ video {
   --tw-text-opacity: 0.9;
 }
 
-.opacity-0 {
-  opacity: 0;
-}
-
-.opacity-100 {
-  opacity: 1;
-}
-
-.opacity-80 {
-  opacity: 0.8;
-}
-
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
-}
-
-.ease-in {
-  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
-}
-
-.ease-out {
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}
-
 /* CSS untuk menampilkan border dan opacity saat elemen dihover tanpa transisi */
 
-.nav {
-  box-sizing: border-box;
-  /* Mempertahankan dimensi total elemen */
+#navigationDrawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  transition: bottom 0.3s ease-in-out;
+  /* Atur durasi dan jenis transisi */
 }
 
-.nav:hover {
-  border: 2px solid #872341;
-  /* Tentukan lebar border yang diinginkan */
-  border-radius: 10px;
-  /* Tentukan tingkat kebulatan pada border */
-  font: bold;
-  margin:10px;
-  /* Atur padding agar panjang border tetap sama */
+#navigationDrawer.open {
+  bottom: 1%;
 }
 
-/* Menghilangkan transisi untuk semua elemen yang dihover */
-
-.nav:hover {
-  transition: none;
+li a:hover {
+  border-bottom: 2px solid #fff;
+  /* Ganti dengan warna atau ketebalan yang diinginkan */
 }
 
-.hover\:text-black:hover {
+li a:active {
+  border-bottom: 2px solid white;
+}
+
+.nav:active,
+.nav:focus {
+  border-bottom: 2px solid red;
+}
+
+#navigationDrawer a {
+  transition: color 0.1s ease-in-out, border-bottom 0.1s ease-in-out;
+  /* Transisi untuk warna dan border-bottom */
+  border-bottom: 2px solid transparent;
+  /* Atur border-bottom default */
+}
+
+#navigationDrawer a:hover,
+#navigationDrawer a:active {
+  border-bottom: 2px solid #000;
+  /* Ganti dengan warna border-bottom yang diinginkan saat hover atau active */
+}
+
+.hover\:text-white:hover {
   --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-100:hover {
@@ -871,20 +884,34 @@ video {
 }
 
 @media (min-width: 640px) {
-  .sm\:order-1 {
-    order: 1;
+  .sm\:col-span-12 {
+    grid-column: span 12 / span 12;
   }
 
-  .sm\:order-2 {
-    order: 2;
+  .sm\:h-auto {
+    height: auto;
   }
 
-  .sm\:block {
-    display: block;
+  .sm\:w-auto {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:h-auto {
+    height: auto;
+  }
+
+  .md\:w-auto {
+    width: auto;
   }
 }
 
 @media (min-width: 1024px) {
+  .lg\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -892,5 +919,12 @@ video {
   .lg\:hidden {
     display: none;
   }
+
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
 }
-  
+
+
+
+
