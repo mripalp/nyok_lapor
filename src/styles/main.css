@@ -43,6 +43,20 @@ li a:active {
   border-bottom: 2px solid #000; /* Ganti dengan warna border-bottom yang diinginkan saat hover atau active */
 }
 
+/* Add responsive CSS here */
+@media (max-width: 768px) {
+  /* Adjust styles for screens up to 768px width */
+  .card {
+      width: calc(50% - 2rem); /* Two cards in a row */
+      margin: 1rem;
+  }
+}
 
+@media (max-width: 480px) {
+  /* Adjust styles for screens up to 480px width */
+  .card {
+      width: calc(100% - 2rem); /* Single card taking full width */
+  }
+}
 
 

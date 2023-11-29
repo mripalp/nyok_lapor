@@ -15,6 +15,7 @@ module.exports = {
         login: '#E9E9E9',
         navBlur: '#636363',
         butungu: '#164863',
+        section2: '#1F2937',
       },
     },
   },
