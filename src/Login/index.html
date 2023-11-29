@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="./assets/icons/nyoklapor-icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        input[type="password"]::-webkit-password-toggle-button {
+            display: none !important;
+        }
+    </style>
+
+    <title>NyokLapor</title>
+</head>
+
+<body style="font-family:'Poppins';">
+    <div class="grid justify-items-end ... mt-10 mr-5 ">
+        <nav>
+            <button class="rounded-l-lg ... bg-[#E9E9E9] text-[#872341] px-3 py-4 font-bold w-28 text-xs	 ">LOG
+                IN</button>
+            <button class="rounded-r-lg ... bg-[#872341] text-[#FFFFFF] px-3 py-4 font-bold w-28 text-xs	 ">SIGN
+                UP</button>
+        </nav>
+    </div>
+    <div class="grid justify-items-center ... font-semibold text-[#C2C2C2] over">
+        <div class="bg-[#1F2937] rounded-lg " style="width: 642px; height: 855px; border-radius: 40px;">
+            <div class="grid justify-items-center ... mt-16">
+                <img src="../public/logo/Nyok lapor.png" style="width:183px; height:102px;">
+                <p class="mt-7 text-5xl	">Hai, Pelapor!</p>
+                <p class="mt-3 text-lg text-center	">Daftar sekarang dan jadilah bagian dari <br> inovasi kami.</p>
+                <img src="../public//homepage/line.png" class="mt-1.5">
+            </div>
+            <form>
+                <label class="block mt-5 ml-40">
+                    <span class="block text-lg font-semibold text-[#B31312]">Email</span>
+                    <input type="email" class="peer ... text-sm bg-white pl-6 pr-32 pt-4 pb-4 text-slate-950	"
+                        placeholder="Youremail@gmail.com" style="border-radius: 20px;" />
+                    <p class="mt-2 invisible peer-invalid:visible text-[#B31312] text-sm">
+                        Please provide a valid email address.
+                    </p>
+                </label>
+
+                <label class="block mt-0.5 ml-40 relative">
+                    <span class="block text-lg font-semibold text-[#B31312]">Password</span>
+                    <div class="relative" style="width: 350px;">
+                        <input type="text" class="text-sm bg-white pl-6 pr-14 pt-4 pb-4 text-slate-950" placeholder="Password" style="border-radius: 20px; width: 343px; text-decoration: none  !important;" id="password"/>
+                        <div class="w-10 h-10 hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... absolute top-1/2 -translate-y-1/2 right-4 flex items-center justify-center " onclick="togglePasswordVisibility()" style="border-radius: 5px;">
+                            <img src="../public/icons/eye.png" id="eyeIcon" class="eye-icon" alt="Eye Icon">
+                        </div>
+                    </div>
+                </label>
+
+                <div class="mt-11 ml-40 relative " >
+                    <button class="hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... text-white pb-5 pt-5 font-bold text-xl	" style="border-radius: 14px; width: 345px; box-shadow: 0px 14px 10px 0px rgba(0, 0, 0, 0.25); transition: background-color 0.2s ">Masuk</button>
+                </div>
+                <div class="mt-11 ml-40  flex items-center ...	">
+                    <div>
+                        <button class=" hover:bg-white bg-slate-100 text-black pb-5 pt-5 font-medium text-xl flex justify-start ...	" style="border-radius: 14px; width: 345px; gap: 25px;"> 
+                            <img src="../public/icons/icon-google.png" style="margin-left: 30px; transition: background-color 0.2s ease">    
+                            <p>Sign Up With google</p>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            var eyeIcon = document.getElementById('eyeIcon');
+
+            if (passwordInput.type === 'text') {
+                passwordInput.type = 'password';
+                eyeIcon.src = '../public/icons/eye.png'; 
+            } else {
+                passwordInput.type = 'text';
+                eyeIcon.src = '../public/icons/eye look.png'; 
+            }
+        }
+    </script>
+</body>
+
+</html>
