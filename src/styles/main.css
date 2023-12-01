@@ -1,3 +1,62 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nosifer&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+/* CSS untuk menampilkan border dan opacity saat elemen dihover tanpa transisi */
+ 
+
+#navigationDrawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  transition: bottom 0.3s ease-in-out; /* Atur durasi dan jenis transisi */
+}
+
+#navigationDrawer.open {
+  bottom: 1%;
+}
+
+li a:hover {
+  border-bottom: 2px solid #fff; /* Ganti dengan warna atau ketebalan yang diinginkan */
+}
+li a:active {
+  border-bottom: 2px solid white;
+}
+
+.nav:active,
+.nav:focus {
+  border-bottom: 2px solid red;
+}
+
+
+#navigationDrawer a {
+  transition: color 0.1s ease-in-out, border-bottom 0.1s ease-in-out; /* Transisi untuk warna dan border-bottom */
+  border-bottom: 2px solid transparent; /* Atur border-bottom default */
+}
+
+#navigationDrawer a:hover,
+#navigationDrawer a:active {
+  border-bottom: 2px solid #000; /* Ganti dengan warna border-bottom yang diinginkan saat hover atau active */
+}
+
+/* Add responsive CSS here */
+@media (max-width: 768px) {
+  /* Adjust styles for screens up to 768px width */
+  .card {
+      width: calc(50% - 2rem); /* Two cards in a row */
+      margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust styles for screens up to 480px width */
+  .card {
+      width: calc(100% - 2rem); /* Single card taking full width */
+  }
+}
+
+
