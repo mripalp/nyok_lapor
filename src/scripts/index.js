@@ -1,9 +1,16 @@
 import '../styles/main.css';
-import '../styles/tailwind.css';
+import App from './views/app';
 
-const container = document.querySelector('body');
-container.innerHTML = `
-    <h1 class="text-3xl font-bold">
-        NyokLapor
-    </h1>
-`;
+const app = new App({
+  button: document.querySelector('#hamburgerButton'),
+  drawer: document.querySelector('#navigationDrawer'),
+  content: document.querySelector('#mainContent'),
+});
+
+window.addEventListener('hashchange', () => {
+  app.renderPage();
+});
+
+window.addEventListener('load', async () => {
+  await app.renderPage();
+});
