@@ -1,3 +1,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#sidebar {
+  width: 220px;
+  min-height: 100vh;
+}
+
+#sidebar button {
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  color: black;
+  font-weight: bolder;
+}
+
+#sidebar button.active {
+  background-color: #872341E5;
+  font-weight: bolder;
+  width: 90%;
+}
+
+#sidebar button.active a {
+  color: white;
+
+}
+
+
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.dashboard-card {
+  width: 100%;
+}
+
+
+#dashboardView {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+
+#akunView,
+#totalLaporanView {
+  display: flex;
+  /* Mengubah display menjadi flex untuk tampilan Akun */
+  flex-direction: column;
+  /* Tampilkan child elements dalam satu kolom */
+}
+
+.akun-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  gap: 16px;
+}
+
+.akun-card {
+  width: 100%;
+}
