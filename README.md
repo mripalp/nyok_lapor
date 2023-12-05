@@ -4,12 +4,8 @@
 
 ```bash
 git clone -b backend https://github.com/Tonnyade27/nyok_lapor.git
+sudo mv /nyok_lapor backend
 cd backend
-
-## Hapus Node Modules
-
-```bash
-rm -rf node_modules
 
 ## Install Dependencies dengan NPM CI
 
