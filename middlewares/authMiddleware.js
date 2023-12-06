@@ -8,13 +8,13 @@ const verifyToken = (token, role, res, next) => {
     }
 
     jwt.verify(token, secretKey, (err, decoded) => {
-        if (err || (role && decoded.role !== role)) {
-            return res.status(401).json({ error: `Unauthorized - Invalid token or not a ${role}` });
+        if (err) {
+            console.error('Error during token verification:', err.message);
+            return res.status(401).json({ error: 'Unauthorized - Invalid token' });
         }
-
-        req.userId = decoded.userId;
-        if (role === 'admin') {
-            req.adminId = decoded.userId;
+    
+        if (decoded.role !== role) {
+            return res.status(401).json({ error: `Unauthorized - Invalid role, expected ${role}` });
         }
 
         next();
@@ -22,9 +22,19 @@ const verifyToken = (token, role, res, next) => {
 };
 
 exports.verifyUser = (req, res, next) => {
-    const token = req.headers.authorization;
-    verifyToken(token, null, res, next);
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    // Mengambil token setelah menghapus "Bearer "
+    const token = authHeader.substring(7);
+
+    verifyToken(token, 'user', res, next);
+    console.log(token);
 };
+
 
 exports.verifyAdmin = (req, res, next) => {
     const token = req.headers.authorization;
