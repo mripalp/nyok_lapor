@@ -16,6 +16,7 @@ module.exports = {
         navBlur: '#636363',
         butungu: '#164863',
         section2: '#1F2937',
+        bghome: '#F1F4F5',
       },
     },
   },
