@@ -2,7 +2,7 @@ require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}`
 const jwt = require('jsonwebtoken');
 const secretKey = process.env.SECRET_KEY;
 
-const verifyToken = (token, role, res, next) => {
+const verifyToken = (token, role, req, res, next) => {
     if (!token) {
         return res.status(401).json({ error: 'Unauthorized - Token not provided' });
     }
@@ -16,7 +16,7 @@ const verifyToken = (token, role, res, next) => {
         if (decoded.role !== role) {
             return res.status(401).json({ error: `Unauthorized - Invalid role, expected ${role}` });
         }
-
+        req.userId = decoded.userId;
         next();
     });
 };
@@ -31,8 +31,7 @@ exports.verifyUser = (req, res, next) => {
     // Mengambil token setelah menghapus "Bearer "
     const token = authHeader.substring(7);
 
-    verifyToken(token, 'user', res, next);
-    console.log(token);
+    verifyToken(token, 'user', req, res, next);
 };
 
 
