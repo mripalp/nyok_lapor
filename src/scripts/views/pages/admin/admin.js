@@ -58,7 +58,6 @@ const Admin = {
     // jumlahLaporan & rata-rata laporan;
     document.getElementById('jumlahLaporan').textContent = '125';
     document.getElementById('rataLaporan').textContent = '225';
-
     const laporanPerBulan = [
       { bulan: 'Januari', jumlah: 20 },
       { bulan: 'Februari', jumlah: 35 },
@@ -67,7 +66,7 @@ const Admin = {
 
     // Contoh data untuk grafik total pengguna
     const chartData = {
-      labels: ['Januari', 'Februari', 'Maret'],
+      labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus'],
       values: [50, 75, 30],
     };
 

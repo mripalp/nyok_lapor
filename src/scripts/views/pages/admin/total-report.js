@@ -44,7 +44,6 @@ const ReportPage = {
       buttonDashboard.classList.add('active');
       buttonAccount.classList.remove('active');
       buttonTotalLaporan.classList.remove('active');
-      // Admin.loadDashboardData();
     });
     accountButton.addEventListener('click', () => {
       buttonAccount.classList.add('active');
