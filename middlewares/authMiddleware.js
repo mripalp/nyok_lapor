@@ -17,6 +17,7 @@ const verifyToken = (token, role, req, res, next) => {
             return res.status(401).json({ error: `Unauthorized - Invalid role, expected ${role}` });
         }
         req.userId = decoded.userId;
+        req.adminId = req.userId;
         next();
     });
 };
@@ -36,6 +37,14 @@ exports.verifyUser = (req, res, next) => {
 
 
 exports.verifyAdmin = (req, res, next) => {
-    const token = req.headers.authorization;
-    verifyToken(token, 'admin', res, next);
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    // Mengambil token setelah menghapus "Bearer "
+    const token = authHeader.substring(7);
+
+    verifyToken(token, 'admin', req, res, next);
 };

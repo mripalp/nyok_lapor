@@ -73,3 +73,30 @@ exports.getProfile = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+
+exports.getDashboardData = async (req, res) => {
+    try {
+        // Simulasi data dummy
+        const reportsPerDay = Math.max(100, Math.floor(Math.random() * 200));
+        const successfulReports = Math.max(100, Math.floor(Math.random() * 200));
+        const totalReports = Math.max(100, Math.floor(Math.random() * 200));
+        const totalReportsThisMonth = Math.max(100, Math.floor(Math.random() * 200));
+        const totalUsersThisMonth = Math.max(100, Math.floor(Math.random() * 200));
+
+        // Menggabungkan semua data dalam objek dashboardData
+        const dashboardData = {
+            reportsPerDay,
+            averageSuccessfulReports: totalReports > 0
+                ? successfulReports / totalReports
+                : 0,
+            totalReportsThisMonth,
+            totalUsersThisMonth,
+        };
+
+        res.status(200).json({ dashboardData });
+    } catch (error) {
+        console.error('Error generating dummy dashboard data:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};

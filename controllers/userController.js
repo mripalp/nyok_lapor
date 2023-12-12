@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const Report = require('../models/report');
 
 const secretKey = process.env.SECRET_KEY;
 
@@ -71,3 +72,54 @@ exports.getProfile = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+// exports.getDashboardData = async (req, res) => {
+//     try {
+//         const { userId } = req;
+
+//         // Jumlah Laporan per Hari
+//         const today = new Date();
+//         today.setHours(0, 0, 0, 0);
+//         const reportsPerDay = await Report.countDocuments({
+//             userId,
+//             createdAt: { $gte: today },
+//         });
+
+//         // Rata-rata Laporan Berhasil
+//         const successfulReports = await Report.countDocuments({
+//             userId,
+//             status: 'success', // Ubah sesuai dengan properti status yang digunakan dalam model laporan
+//         });
+//         const totalReports = await Report.countDocuments({ userId });
+//         const averageSuccessfulReports = totalReports > 0
+//             ? successfulReports / totalReports
+//             : 0;
+
+//         // Total Laporan Per Bulan (Tahun Ini)
+//         const thisMonth = new Date();
+//         thisMonth.setMonth(0, 1);
+//         thisMonth.setHours(0, 0, 0, 0);
+//         const totalReportsThisMonth = await Report.countDocuments({
+//             userId,
+//             createdAt: { $gte: thisMonth },
+//         });
+
+//         // Total Pengguna Per Bulan
+//         const totalUsersThisMonth = await User.countDocuments({
+//             createdAt: { $gte: thisMonth },
+//         });
+
+//         // Menggabungkan semua data dalam objek dashboardData
+//         const dashboardData = {
+//             reportsPerDay,
+//             averageSuccessfulReports,
+//             totalReportsThisMonth,
+//             totalUsersThisMonth,
+//         };
+
+//         res.status(200).json({ dashboardData });
+//     } catch (error) {
+//         console.error('Error fetching dashboard data:', error.message);
+//         res.status(500).json({ error: error.message });
+//     }
+// };
