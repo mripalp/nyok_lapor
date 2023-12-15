@@ -54,7 +54,7 @@ const Home = {
             <div class="col-span-1 lg:col-span-1 border-b-2 border-black lg:border-b-0 lg:border-r-2 sm:border-b flex flex-col items-center justify-center p-2 mx-5">
                 <div class="p-4 lg:p-6 text-center"  data-aos="fade-right">
                     <h3 class="text-4xl lg:text-xl font-bold mt-10 " style="font-size:35px">Upload</h3>
-                    <img src="./assets/homepage/laptop 1.png" alt="Gambar upload" class="w-[256px] h-[240px] border-none mx-auto">
+                    <img src="./assets/homepage/folder.png" alt="Gambar upload" class="w-[256px] h-[240px] border-none mx-auto">
                     <div class="mt-2 text-center">
                         <p>Memungkinkan pengguna untuk memberikan bukti atau dokumentasi yang mendukung laporan mereka, menjadikan proses pengaduan lebih kuat, akurat, dan memberikan kejelasan yang diperlukan untuk tindakan responsif</p>
                     </div>
@@ -166,9 +166,9 @@ const Home = {
                 <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Full stack-Developer</h3>
             </div>
             <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="https:/ /github.com/Tonnyade27" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="https:/ /www.instagram.com/tonnyadetya?igshid=NGVhN2U2NjQ0Yg==" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href="https:/ /www.linkedin.com/in/tonny-adetya-pratama-a3a769197/"></a>
+          <button><a href="https://github.com/Tonnyade27"><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]"></a> </button>  
+          <button><a href="https://www.instagram.com/tonnyadetya?igshid=NGVhN2U2NjQ0Yg=="><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]"  ></a> </button>    
+          <button><a href="https://www.linkedin.com/in/tonny-adetya-pratama-a3a769197/"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" ></a></button>   
              </div>
         </div>
 
@@ -181,9 +181,9 @@ const Home = {
                 <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
             </div>
             <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="https:/ /github.com/Guardiantz" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="https:/ /www.instagram.com/yvandr?igshid=OGQ5ZDc2ODk2ZA==" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=" https: //id.linkedin.com/in/yova-andre-146988221"></a>
+            <a href="https://github.com/Guardiantz" ><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
+            <a href="https://www.instagram.com/yvandr?igshid=OGQ5ZDc2ODk2ZA=="><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]"  ></a> 
+           <a href=" https://id.linkedin.com/in/yova-andre-146988221"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" ></a>
              </div>
         </div>
         <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
