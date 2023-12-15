@@ -15,7 +15,7 @@ class NavBar extends HTMLElement {
                         <a class="nav hover:text-white hover:opacity-100" href="#/home">HOME</a>
                     </li>
                     <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="">ABOUT US</a>
+                        <a class="nav hover:text-white hover:opacity-100" href="#aboutMe">ABOUT US</a>
                     </li>
                     <li class="text-black text-xs">
                         <a class="nav hover:text-white hover:opacity-100" href="#/laporan">LAPORAN</a>
@@ -25,8 +25,8 @@ class NavBar extends HTMLElement {
 
             <div class="w-52 h-10 flex md:w-auto md:h-auto gap-2  sm:w-auto sm:h-auto">
                 <div class="flex ">
-                <button class="grow bg-white px-7 py-3 font-bold text-merah text-opacity-90 rounded-l-2xl text-xs">LOG IN</button>
-                <button class="grow bg-merah bg-opacity-90 px-7 py-3 font-bold text-white rounded-r-2xl text-xs">SIGN UP</button>
+                <button class="grow bg-white px-7 py-3 font-bold text-merah text-opacity-90 rounded-l-2xl text-xs"><a href="?#/loginuser">LOG IN</a></button>
+                <button class="grow bg-merah bg-opacity-90 px-7 py-3 font-bold text-white rounded-r-2xl text-xs"><a href="#/registeruser">SIG UP</a></button>
                 </div>
                 <button  id="hamburgerButton"><ion-icon name="menu" class="text-3xl cursor-pointer  lg:hidden" arial-label="hamburger"></ion-icon></button>
             </div>

@@ -2,6 +2,7 @@
 import '../styles/main.css';
 import '../styles/tailwind.css';
 import './views/components/nav-bar';
+import './views/components/foot-bar';
 import Alpine from 'alpinejs';
 import AOS from 'aos';
 import App from './views/app';
@@ -27,6 +28,6 @@ window.addEventListener('hashchange', () => {
   app.renderPage();
 });
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async () => {
   app.renderPage();
 });

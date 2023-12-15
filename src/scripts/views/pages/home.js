@@ -1,3 +1,6 @@
+import Swal from 'sweetalert2/dist/sweetalert2.all.min';
+import NyokLaporAPI from '../../data/data-source';
+
 const Home = {
   async render() {
     return `
@@ -134,12 +137,11 @@ const Home = {
 
 
 
-
-<section class="bg-section2 flex justify-center items-center flex-col ">
+<section class="bg-section2 flex justify-center items-center flex-col" id="aboutMe">
     <h1 class="text-white font-bold text-center text-[50px]">Development</h1>
     <h1 class="text-white font-bold text-center text-[35px]">Our Team</h1>
 
-    <div class="flex flex-wrap justify-center items-center gap-4 mt-7" data-aos="fade-right" >
+    <div class="flex flex-wrap justify-center items-center gap-4 mt-7 mb-7" data-aos="fade-right" >
         <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
             <div class="img-area">
                 <img src="./assets/images/Fadli.jpg" class="rounded-lg w-full h-60 object-fit" alt="Fadli Rahmat">
@@ -149,9 +151,9 @@ const Home = {
                 <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
             </div>
             <div class="flex justify-center items-center mt-2 gap-2">
-           <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
-           <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]"></a> 
-          <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]"></a>
+         <button><a href="https://github.com/jk0623"><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]"  ></a></button>
+        <button><a  href="https://www.instagram.com/fadli.rhmt?igshid=OGQ5ZDc2ODk2ZA=="><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]"></a></button> 
+       <button><a href="https://www.linkedin.com/in/fadli-rahmat-011a8327a"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" ></a></button> 
             </div>
         </div>
 
@@ -164,9 +166,9 @@ const Home = {
                 <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Full stack-Developer</h3>
             </div>
             <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]"></a>
+            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="https:/ /github.com/Tonnyade27" ></a> 
+            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="https:/ /www.instagram.com/tonnyadetya?igshid=NGVhN2U2NjQ0Yg==" ></a> 
+           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href="https:/ /www.linkedin.com/in/tonny-adetya-pratama-a3a769197/"></a>
              </div>
         </div>
 
@@ -179,132 +181,100 @@ const Home = {
                 <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
             </div>
             <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]"></a>
+            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="https:/ /github.com/Guardiantz" ></a> 
+            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="https:/ /www.instagram.com/yvandr?igshid=OGQ5ZDc2ODk2ZA==" ></a> 
+           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=" https: //id.linkedin.com/in/yova-andre-146988221"></a>
              </div>
         </div>
+        <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
+        <div class="img-area">
+            <img src="./assets/images/Ripal.jpg" class="rounded-lg w-full h-60 object-cover" alt="Ripal">
+        </div>
+        <div class="text-area mt-6 text-center  ">
+            <p class="text-section1 font-bold text-lg">Mohamad Ripal. P</p>
+            <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
+        </div>
+        <div class="flex justify-center items-center mt-2 gap-2">
+        <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
+        <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
+       <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
+          </div>
     </div>
 
-    <div class="flex flex-wrap justify-center items-center gap-4 mt-7 mb-7" data-aos="fade-left">
-        <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
-            <div class="img-area">
-                <img src="./assets/images/Ripal.jpg" class="rounded-lg w-full h-60 object-cover" alt="Ripal">
-            </div>
-            <div class="text-area mt-6 text-center  ">
-                <p class="text-section1 font-bold text-lg">Mohamad Ripal. P</p>
-                <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
-            </div>
-            <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]"></a>
-             </div>
+    <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
+        <div class="img-area">
+            <img src="./assets/images/hazron.png" class="rounded-lg w-full h-60 object-cover" alt="hazron">
         </div>
-
-        <div class="card w-60 h-96 bg-black rounded-xl p-3 flex flex-col justify-center items-center">
-            <div class="img-area">
-                <img src="./assets/images/hazron.png" class="rounded-lg w-full h-60 object-cover" alt="hazron">
-            </div>
-            <div class="text-area mt-6 text-center  ">
-                <p class="text-section1 font-bold text-lg">M.Hazron</p>
-                <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
-            </div>
-            <div class="flex justify-center items-center mt-2 gap-2">
-            <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" ></a> 
-            <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" ></a> 
-           <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]"></a>
-             </div>
+        <div class="text-area mt-6 text-center  ">
+            <p class="text-section1 font-bold text-lg">M.Hazron</p>
+            <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
         </div>
+        <div class="flex justify-center items-center mt-2 gap-2">
+        <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
+        <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
+       <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
+          </div>
+    </div>
     </div>
 </section>
 
-<footer class="bg-white text-black py-8 lg:py-12 mt-9 ">
-    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-4 gap-4 lg:gap-8 px-4">
-        <div class="flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:gap-4">
-            <p class="mr-4 mb-4 lg:mb-0 lg:mr-0">Ready to get started</p>
-            <button class="bg-red-500 hover:bg-slate-800 px-4 py-2 text-white rounded-md">Get Started</button>
-        </div>
-        <div class="flex flex-col items-center lg:items-start lg:gap-8">
-            <p class="text-sm mt-4 lg:mt-0">Services</p>
-            <p class="text-sm">Email Campaign</p>
-            <p class="text-sm">Branding</p>
-            <p class="text-sm">Offline</p>
-        </div>
-        <div class="flex flex-col items-center lg:items-start lg:gap-8">
-            <p class="text-sm mt-4 lg:mt-0">About Us</p>
-            <p class="text-sm">Our Story</p>
-            <p class="text-sm">Team</p>
-            <p class="text-sm">Careers</p>
-        </div>
-        <div class="flex flex-col items-center lg:items-start lg:gap-8">
-            <p class="text-sm mt-4 lg:mt-0">Resources</p>
-            <p class="text-sm">Blog</p>
-            <p class="text-sm">FAQs</p>
-            <p class="text-sm">Downloads</p>
-        </div>
-    </div>
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-  
-  
       `;
   },
 
   async afterRender() {
     // Fungsi ini akan dipanggil setelah render()
+    const loginInfoUser = localStorage.getItem('loginInfoUser');
+
+    if (!loginInfoUser || loginInfoUser === 'undefined') {
+      // Pengguna belum login
+      Swal.fire({
+        icon: 'info',
+        title: 'Anda belum login',
+        text: 'Mohon login untuk mengakses halaman User ini.',
+        showCancelButton: true,
+        confirmButtonText: 'Log In',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '?#/loginuser';
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '#/home';
+        }
+      });
+
+      return;
+    }
+
+    // Parse data loginInfoUser dari local storage
+    const parsedLoginInfoUser = JSON.parse(loginInfoUser);
+
+    // Pengecekan token kadaluwarsa
+    const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoUser.expiresIn);
+
+    if (isTokenValid) {
+      // Token sudah kadaluwarsa
+      Swal.fire({
+        icon: 'info',
+        title: 'Token Kadaluwarsa',
+        text: 'Token Anda telah kadaluwarsa. Mohon login kembali.',
+        showCancelButton: true,
+        confirmButtonText: 'Log In',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '?#/loginuser';
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '#/home';
+        }
+      });
+
+      // eslint-disable-next-line no-useless-return
+      return;
+    }
   },
 };
 
