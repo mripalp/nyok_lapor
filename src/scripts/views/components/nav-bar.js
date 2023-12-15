@@ -12,13 +12,13 @@ class NavBar extends HTMLElement {
             <div class=" w-96 pt-4 pb-4  rounded-full hidden lg:block bg-navBlur bg-opacity-5 lg:w-1/2">
                 <ul class="flex gap-16 justify-center font-medium  font-Poppins">
                     <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="#/home">HOME</a>
+                        <a class="nav hover:text-red-700 hover:opacity-100" href="#/home">HOME</a>
                     </li>
                     <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="#aboutMe">ABOUT US</a>
+                        <a class="nav hover:text-red-700 hover:opacity-100" href="#aboutMe">ABOUT US</a>
                     </li>
                     <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="#/laporan">LAPORAN</a>
+                        <a class="nav hover:text-red-700 hover:opacity-100" href="#/laporan">LAPORAN</a>
                     </li>
                 </ul>
             </div>

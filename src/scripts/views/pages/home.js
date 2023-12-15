@@ -54,7 +54,7 @@ const Home = {
             <div class="col-span-1 lg:col-span-1 border-b-2 border-black lg:border-b-0 lg:border-r-2 sm:border-b flex flex-col items-center justify-center p-2 mx-5">
                 <div class="p-4 lg:p-6 text-center"  data-aos="fade-right">
                     <h3 class="text-4xl lg:text-xl font-bold mt-10 " style="font-size:35px">Upload</h3>
-                    <img src="./assets/homepage/laptop 1.png" alt="Gambar Laptop" class="w-[256px] h-[240px] border-none mx-auto">
+                    <img src="./assets/homepage/laptop 1.png" alt="Gambar upload" class="w-[256px] h-[240px] border-none mx-auto">
                     <div class="mt-2 text-center">
                         <p>Memungkinkan pengguna untuk memberikan bukti atau dokumentasi yang mendukung laporan mereka, menjadikan proses pengaduan lebih kuat, akurat, dan memberikan kejelasan yang diperlukan untuk tindakan responsif</p>
                     </div>
@@ -96,7 +96,7 @@ const Home = {
             </div>            
                     <p class="text-lg lg:text-xl mt-4 text-center my-4">
                         Layanan terbaik kami untuk website pelaporan terpercaya, dan kompeten. Kami hadir untuk memberikan pengalaman
-                        <span class="bg-red-500 text-white p-1 rounded">pelaporan yang mulus dan solusi yang cepat,</span>
+                        <span class="bg-merah text-white p-1 rounded">pelaporan yang mulus dan solusi yang cepat,</span>
                         menjadikan setiap masalah pelaporan Anda menjadi prioritas utama bagi kami.
                     </p>
                 </div>

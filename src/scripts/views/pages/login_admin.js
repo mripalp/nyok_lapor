@@ -10,9 +10,9 @@ const LoginAdmin = {
     <div class="grid justify-items-center ... font-semibold text-[#C2C2C2] over">
         <div class="bg-[#1F2937] rounded-lg " style="width: 642px; height: 855px; border-radius: 40px;">
             <div class="grid justify-items-center ... mt-16">
-                <img src="../assets/logo/Nyok lapor.png" style="width:183px; height:102px;">
+                <img src="./assets/icons/nyoklapor-icon.png" style="width:183px; height:102px;">
                 <p class="mt-7 text-5xl">Hai, Admin</p>
-                <img src="../assets/homepage/line.png" class="mt-1.5">
+                <img src="./assets/icons/lines.png" class="mt-1.5">
             </div>
             <form id="login-form">
                 <label class="block mt-5 ml-40">
@@ -29,7 +29,7 @@ const LoginAdmin = {
                     <div class="relative" style="width: 350px;">
                         <input type="password" id="password" class="text-sm bg-white pl-6 pr-14 pt-4 pb-4 text-slate-950" placeholder="Password" style="border-radius: 20px; width: 343px; text-decoration: none  !important;" id="password"/>
                         <div class="w-10 h-10 hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... absolute top-1/2 -translate-y-1/2 right-4 flex items-center justify-center" style="border-radius: 5px;">
-                            <img src="../assets/icons/eye.png" id="eyeIcon" class="eye-icon" alt="Eye Icon">
+                            <img src="./assets/icons/icon-eye.png" id="eyeIcon" class="eye-icon" alt="Eye Icon">
                         </div>
                     </div>
                 </label>

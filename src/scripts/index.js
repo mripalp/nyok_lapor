@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 import '../styles/main.css';
 import '../styles/tailwind.css';
 import './views/components/nav-bar';
