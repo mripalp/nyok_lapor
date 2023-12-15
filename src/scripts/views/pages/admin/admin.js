@@ -77,16 +77,18 @@ const Admin = {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
           window.location.hash = '#/login';
+          window.location.reload();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
           window.location.hash = '#/home';
+          window.location.reload();
         }
       });
 
       return;
     }
 
-    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 3);
+    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 10);
 
     const AdminContainer = document.querySelector('#dashboardView');
     const SidebarContainer = document.querySelector('#sidebar');

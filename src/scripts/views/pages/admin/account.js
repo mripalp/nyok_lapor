@@ -75,16 +75,18 @@ const AccountPage = {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
           window.location.hash = '#/login';
+          window.location.reload();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
           window.location.hash = '#/home';
+          window.location.reload();
         }
       });
 
       return;
     }
 
-    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 3);
+    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 10);
 
     const AccountPageContainer = document.querySelector('#akunView');
     const SidebarContainer = document.querySelector('#sidebar');

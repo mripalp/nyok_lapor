@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 #sidebar {
-  width: 220px;
+  width: 260px;
   min-height: 100vh;
 }
 
@@ -15,7 +15,7 @@
 }
 
 #sidebar button.active {
-  background-color: #872341E5;
+  background-color: #164863;
   font-weight: bolder;
   width: 90%;
 }

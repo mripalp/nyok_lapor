@@ -2,7 +2,7 @@ const createSidebarTemplate = () => `
             <img src="./assets/icons/nyoklapor-icon.png" alt="Logo" class="ml-10 mb-6 w-20 h-10">
 
 <img src="./assets/images/Ripal.jpg" alt="Admin" class="ml-10 mb-4 w-16 h-16 rounded-full">
-<p class="text-sm text-black mb-4 ml-14 uppercase font-black">ripal</p>
+<p class="text-sm text-black mb-4 ml-4 uppercase font-black">ripal</p>
 <ul>
     <li class="mb-2">
         <button id="dashboard-button" class="flex items-center text-white rounded-full" data-view="dashboard">
@@ -11,7 +11,7 @@ const createSidebarTemplate = () => `
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
                 </path>
             </svg>
-            <a href="#/admin" id="home" class="flex items-center text-black rounded-full">Dashboard</a>
+            <a href="#/admin" id="home" class="flex items-center hover:border-none text-black rounded-full">Dashboard</a>
         </button>
     </li>
     <li class="mb-2">
@@ -20,7 +20,7 @@ const createSidebarTemplate = () => `
                 <path
                     d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
             </svg>
-            <a href="#/account" id="home" class="flex items-center text-black rounded-full min-h-max">Akun</a>
+            <a href="#/account" id="home" class="flex items-center hover:border-none text-black rounded-full min-h-max">Akun</a>
         </button>
     </li>
     <li class="mb-2">
@@ -29,7 +29,7 @@ const createSidebarTemplate = () => `
                 <path
                     d="M160 80c0-26.5 21.5-48 48-48h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V80zM0 272c0-26.5 21.5-48 48-48H80c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V272zM368 96h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H368c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48z" />
             </svg>
-            <a href="#/report" id="home" class="flex items-center text-black rounded-full">Total Laporan</a>
+            <a href="#/report" id="home" class="flex items-center hover:border-none text-black rounded-full">Total Laporan</a>
         </button>
     </li>
 </ul>
