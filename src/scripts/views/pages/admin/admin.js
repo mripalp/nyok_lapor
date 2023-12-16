@@ -48,10 +48,10 @@ const Admin = {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/login';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/home';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
         }
       });
 
@@ -76,11 +76,11 @@ const Admin = {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/login';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
           window.location.reload();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/home';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
           window.location.reload();
         }
       });
