@@ -1,6 +1,3 @@
-import Swal from 'sweetalert2/dist/sweetalert2.all.min';
-import NyokLaporAPI from '../../data/data-source';
-
 const Home = {
   async render() {
     return `
@@ -103,33 +100,37 @@ const Home = {
             </div>
             <!-- Kolom 2 -->
             <div class="col-span-1 lg:col-span-1 sm:flex p-4 lg:p-4 flex-col justify-center items-center">
-    <div class="grid grid-cols-2 gap-8 justify-center mt-4">
-        <div id="slide1" class="flex flex-col justify-center items-center transform translate-y-28" data-aos="fade-up"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="4000"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="false"
-        >
-            <img src="./assets/homepage/komen1.png" alt="Gambar komen1" class="w-full h-[263px]" style="max-width: 362px; ">
-            <img src="./assets/homepage/komen2.png" alt="Gambar komen2" class="w-full h-[263px]" style="max-width: 362px; ">
-            <img src="./assets/homepage/komen3.png" alt="Gambar komen3" class="w-full h-[263px]" style="max-width: 362px; ">
+            <div class="grid grid-cols-2 gap-8 justify-center mt-4">
+                <div id="slide1" class="flex flex-col justify-center items-center" style="position: relative; top: -35px;">
+                    <div class="transform translate-y-10 lg:-translate-y-28" data-aos="fade-up"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="4000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false">
+                        <img src="./assets/homepage/komen1.png" alt="Gambar komen1" class="w-full h-[243px]" style="max-width: 300px;">
+                        <img src="./assets/homepage/komen2.png" alt="Gambar komen2" class="w-full h-[243px]" style="max-width: 300px;">
+                        <img src="./assets/homepage/komen3.png" alt="Gambar komen3" class="w-full h-[243px]" style="max-width: 300px;">
+                    </div>
+                </div>
+                <div id="slide2" class="flex flex-col justify-center items-center" style="position: relative; bottom: -35px;">
+                    <div class="transform -translate-y-10 lg:translate-y-10" data-aos="fade-down"
+                        data-aos-offset="200"
+                        data-aos-delay="50"
+                        data-aos-duration="4000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false">
+                        <img src="./assets/homepage/komen4.png" alt="Gambar komen4" class="w-full h-[243px]" style="max-width: 300px;">
+                        <img src="./assets/homepage/komen5.png" alt="Gambar komen5" class="w-full h-[243px]" style="max-width: 300px;">
+                        <img src="./assets/homepage/komen6.png" alt="Gambar komen6" class="w-full h-[243px]" style="max-width: 300px;">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="slide2" class="flex flex-col justify-center items-center transform -translate-y-10"data-aos="fade-down"
-        data-aos-offset="200"
-        data-aos-delay="50"
-        data-aos-duration="4000"
-        data-aos-easing="ease-in-out"
-        data-aos-mirror="true"
-        data-aos-once="false"
-        >
-            <img src="./assets/homepage/komen4.png" alt="Gambar komen4" class="w-full h-[263px]" style="max-width: 362px; ">
-            <img src="./assets/homepage/komen5.png" alt="Gambar komen5" class="w-full h-[263px]" style="max-width: 362px; ">
-            <img src="./assets/homepage/komen6.png" alt="Gambar komen6" class="w-full h-[263px]" style="max-width: 362px; ">
-        </div>
-    </div>
-</div>
+        
+
 
         </div>
     </div>
@@ -223,58 +224,7 @@ const Home = {
 
   async afterRender() {
     // Fungsi ini akan dipanggil setelah render()
-    const loginInfoUser = localStorage.getItem('loginInfoUser');
-
-    if (!loginInfoUser || loginInfoUser === 'undefined') {
-      // Pengguna belum login
-      Swal.fire({
-        icon: 'info',
-        title: 'Anda belum login',
-        text: 'Mohon login untuk mengakses halaman User ini.',
-        showCancelButton: true,
-        confirmButtonText: 'Log In',
-        cancelButtonText: 'Batal',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          localStorage.removeItem('loginInfoUser');
-          window.location.href = '?#/loginuser';
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          localStorage.removeItem('loginInfoUser');
-          window.location.href = '#/home';
-        }
-      });
-
-      return;
-    }
-
-    // Parse data loginInfoUser dari local storage
-    const parsedLoginInfoUser = JSON.parse(loginInfoUser);
-
-    // Pengecekan token kadaluwarsa
-    const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoUser.expiresIn);
-
-    if (isTokenValid) {
-      // Token sudah kadaluwarsa
-      Swal.fire({
-        icon: 'info',
-        title: 'Token Kadaluwarsa',
-        text: 'Token Anda telah kadaluwarsa. Mohon login kembali.',
-        showCancelButton: true,
-        confirmButtonText: 'Log In',
-        cancelButtonText: 'Batal',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          localStorage.removeItem('loginInfoUser');
-          window.location.href = '?#/loginuser';
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          localStorage.removeItem('loginInfoUser');
-          window.location.href = '#/home';
-        }
-      });
-
-      // eslint-disable-next-line no-useless-return
-      return;
-    }
+    //
   },
 };
 

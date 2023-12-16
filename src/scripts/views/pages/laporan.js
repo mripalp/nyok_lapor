@@ -1,6 +1,6 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-empty-function */
-/* eslint-disable quotes */
+import Swal from 'sweetalert2/dist/sweetalert2.all.min';
+import NyokLaporAPI from '../../data/data-source';
+
 const Laporan = {
   async render() {
     return `
@@ -54,10 +54,64 @@ const Laporan = {
   },
 
   async afterRender() {
+    const loginInfoUser = localStorage.getItem('loginInfoUser');
+
+    if (!loginInfoUser || loginInfoUser === 'undefined') {
+      // Pengguna belum login
+      Swal.fire({
+        icon: 'info',
+        title: 'Anda belum login',
+        text: 'Mohon login untuk mengakses halaman User ini.',
+        showCancelButton: true,
+        confirmButtonText: 'Log In',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '?#/loginuser';
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '#/home';
+        }
+      });
+
+      return;
+    }
+
+    // Parse data loginInfoUser dari local storage
+    const parsedLoginInfoUser = JSON.parse(loginInfoUser);
+
+    // Pengecekan token kadaluwarsa
+    const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoUser.expiresIn);
+
+    if (isTokenValid) {
+      // Token sudah kadaluwarsa
+      Swal.fire({
+        icon: 'info',
+        title: 'Token Kadaluwarsa',
+        text: 'Token Anda telah kadaluwarsa. Mohon login kembali.',
+        showCancelButton: true,
+        confirmButtonText: 'Log In',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '?#/loginuser';
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          localStorage.removeItem('loginInfoUser');
+          window.location.href = '#/home';
+        }
+      });
+
+      // eslint-disable-next-line no-useless-return
+      return;
+    }
+
     const locationButton = document.getElementById('lokasi_kejadian');
 
     locationButton.addEventListener('click', () => {
       if (navigator.geolocation) {
+        // eslint-disable-next-line no-use-before-define
         navigator.geolocation.getCurrentPosition(showPosition);
       } else {
         locationButton.textContent = 'Geolocation is not supported by this browser.';
