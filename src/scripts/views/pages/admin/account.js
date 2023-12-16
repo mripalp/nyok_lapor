@@ -23,7 +23,7 @@ const AccountPage = {
             </div>
 
             <!-- Tampilan Dashboard -->
-            <div id="akunView">
+            <div id="akunView" class="bg-white p-8 rounded-md shadow-md w-full h-screen">
             </div>
         </div>
     </div>
@@ -105,6 +105,8 @@ const AccountPage = {
 
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
+    const footerHidden = document.querySelector('footer');
+    footerHidden.classList.add('hidden');
     const dashboardButton = document.getElementById('dashboard-button');
     const totalLaporanButton = document.getElementById('total-laporan-button');
     const buttonAccount = document.querySelector('#sidebar button[data-view="akun"]');
@@ -130,6 +132,66 @@ const AccountPage = {
     // Redirect ke halaman login setelah logout
     window.location.hash = '/home';
     window.location.reload();
+  },
+
+  async approveUser(button) {
+  // Hapus baris dengan user ID yang sesuai dari tabel
+    console.log(button);
+    const userRow = button.closest('tr');
+    if (userRow) {
+      const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
+
+      // Konfirmasi sebelum menyetujui
+      const confirmResult = await Swal.fire({
+        icon: 'question',
+        title: 'Konfirmasi',
+        text: `Apakah Anda yakin ingin menyetujui user dengan email ${userEmail}?`,
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Setujui',
+        cancelButtonText: 'Batal',
+      });
+
+      if (confirmResult.isConfirmed) {
+        userRow.remove();
+
+        // Tampilkan alert SweetAlert saat disetujui
+        Swal.fire({
+          icon: 'success',
+          title: 'User Disetujui!',
+          text: `User dengan email ${userEmail} telah disetujui dan dihapus dari daftar.`,
+        });
+      }
+    }
+  },
+
+  async rejectUser(button) {
+  // Hapus baris dengan user ID yang sesuai dari tabel
+    console.log(button);
+    const userRow = button.closest('tr');
+    if (userRow) {
+      const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
+
+      // Konfirmasi sebelum menolak
+      const confirmResult = await Swal.fire({
+        icon: 'question',
+        title: 'Konfirmasi',
+        text: `Apakah Anda yakin ingin menolak user dengan email ${userEmail}?`,
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Tolak',
+        cancelButtonText: 'Batal',
+      });
+
+      if (confirmResult.isConfirmed) {
+        userRow.remove();
+
+        // Tampilkan alert SweetAlert saat ditolak
+        Swal.fire({
+          icon: 'error',
+          title: 'User Ditolak!',
+          text: `User dengan email ${userEmail} ditolak dan dihapus dari daftar.`,
+        });
+      }
+    }
   },
 };
 
