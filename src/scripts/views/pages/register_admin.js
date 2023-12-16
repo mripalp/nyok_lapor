@@ -6,51 +6,47 @@ const RegisAdmin = {
   async render() {
     return `
     <section>
-    <div class="grid justify-items-center ... font-semibold text-[#C2C2C2] over">
-        <div class="bg-[#1F2937] rounded-lg " style="width: 642px; height: 855px; border-radius: 40px;">
-            <div class="grid justify-items-center ... mt-16">
+    <div class="grid justify-items-center font-bold text-[#C2C2C2] over">
+        <div class="bg-white rounded-lg shadow-2xl shadow-gray-500 mb-11" style="width: 642px; height: 900px; border-radius: 20px;">    
+            <div class="grid justify-items-center mt-16">
                 <img src="./assets/icons/nyoklapor-icon.png" style="width:183px; height:102px;">
-                <p class="mt-7 text-5xl">Hai, Selamat Datang</p>
-                <img src="./assets/icons/lines.png" class="mt-1.5">
+                <p class="mt-9 text-butungu text-5xl uppercase">Register Admin</p>
             </div>
             <form id="register-form">
-                <label class="block mt-5 ml-40">
-                    <span class="block text-lg font-semibold text-[#B31312]">Email</span>
-                    <input type="email" id="email" class="peer ... text-sm bg-white pl-6 pr-32 pt-4 pb-4 text-slate-950"
-                        placeholder="Youremail@gmail.com" style="border-radius: 20px;" />
-                    <p class="mt-2 invisible peer-invalid:visible text-[#B31312] text-sm">
-                        Please provide a valid email address.
-                    </p>
+                <label class="block mt-6 ml-40">
+                    <span class="block text-lg font-bold text-butungu">Email</span>
+                    <input type="email" id="email" class="text-sm bg-gray-200 w-3/4 px-5 py-4 text-slate-950" placeholder="Email" style="border-radius: 20px;" />
                 </label>
 
                 <label class="block mt-0.5 ml-40 relative">
-                    <span class="block text-lg font-semibold text-[#B31312]">Password</span>
-                    <div class="relative" style="width: 350px;">
-                        <input type="password" id="password" class="text-sm bg-white pl-6 pr-14 pt-4 pb-4 text-slate-950" placeholder="Password" style="border-radius: 20px; width: 343px; text-decoration: none  !important;" />
-                        <div class="w-10 h-10 hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... absolute top-1/2 -translate-y-1/2 right-4 flex items-center justify-center" style="border-radius: 5px;">
+                    <span class="block text-lg font-bold text-butungu">Password</span>
+                    <div class="relative w-3/4 px-2 ">
+                        <input type="password" id="password" class="text-sm bg-gray-200 pl-6 pr-14 pt-4 pb-4 text-slate-950" placeholder="Password" style="border-radius: 20px; width: 343px; text-decoration: none  !important;" id="password"/>
+                        <div class="w-10 h-10 hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... absolute top-1/2 -translate-y-1/2 right-4 flex items-center justify-center " style="border-radius: 5px;">
                             <img src="./assets/icons/icon-eye.png" id="eyeIcon" class="eye-icon" alt="Eye Icon">
                         </div>
                     </div>
                 </label>
 
                 <!-- Input untuk fullName -->
-                <label class="block mt-5 ml-40">
-                    <span class="block text-lg font-semibold text-[#B31312]">Full Name</span>
-                    <input type="text" id="fullName" class="peer ... text-sm bg-white pl-6 pr-32 pt-4 pb-4 text-slate-950"
-                        placeholder="Your Full Name" style="border-radius: 20px;" />
+                <label class="block mt-6 ml-40">
+                    <span class="block text-lg font-bold text-butungu">Full Name</span>
+                    <input type="text" id="fullName" class="text-sm bg-gray-200 w-3/4 px-5 py-4 text-slate-950"
+                        placeholder="Full Name" style="border-radius: 20px;"/>
                 </label>
 
                 <!-- Input untuk phoneNumber -->
-                <label class="block mt-5 ml-40">
-                    <span class="block text-lg font-semibold text-[#B31312]">Phone Number</span>
-                    <input type="text" id="phoneNumber" class="peer ... text-sm bg-white pl-6 pr-32 pt-4 pb-4 text-slate-950"
-                        placeholder="Your Phone Number" style="border-radius: 20px;" />
+                <label class="block mt-6 ml-40">
+                    <span class="block text-lg font-bold text-butungu">Phone Number</span>
+                    <input type="text" id="phoneNumber" class="text-sm bg-gray-200 w-3/4 px-5 py-4 text-slate-950"
+                        placeholder="Phone Number" style="border-radius: 20px;" />
                 </label>
 
                 <div class="mt-11 ml-40 relative " >
-                    <button id="login-btn" class="hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... text-white pb-5 pt-5 font-bold text-xl" style="border-radius: 14px; width: 345px; box-shadow: 0px 14px 10px 0px rgba(0, 0, 0, 0.25); transition: background-color 0.2s ">Daftar</button>
+                    <button id="login-btn" class="bg-butungu hover:bg-opacity-90 active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... text-white pb-5 pt-5 font-bold text-xl" style="border-radius: 14px; width: 345px; box-shadow: 0px 14px 10px 0px rgba(0, 0, 0, 0.25); transition: background-color 0.2s ">Daftar</button>
                 </div>
-                <div class="mt-11 ml-40  flex items-center ...">  
+                <div class="mt-5 ml-40 flex items-center text-butungu font-normal">
+                    <p>Sudah punya akun? <span class="text-sky-500 font-bold"><a href="#/loginadmin">Login disini</a></span></p>
                 </div>
             </form>
         </div>
@@ -112,7 +108,6 @@ const RegisAdmin = {
     });
     eyeIconPassword.addEventListener('click', this.togglePasswordVisibility);
   },
-
   async togglePasswordVisibility() {
     const passwordInput = document.getElementById('password');
     const eyeIcon = document.getElementById('eyeIcon');
