@@ -104,6 +104,8 @@ const ReportPage = {
 
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
+    const footerHidden = document.querySelector('footer');
+    footerHidden.classList.add('hidden');
     const dashboardButton = document.getElementById('dashboard-button');
     const accountButton = document.getElementById('account-button');
     const buttonAccount = document.querySelector('#sidebar button[data-view="akun"]');

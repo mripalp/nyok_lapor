@@ -99,6 +99,8 @@ const Admin = {
 
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
+    const footerHidden = document.querySelector('footer');
+    footerHidden.classList.add('hidden');
     // const logoutButton = document.getElementById('logout-button');
     const isAuthenticated = localStorage.getItem('loginInfoAdmin') !== null;
     if (isAuthenticated) {
