@@ -18,15 +18,10 @@ const Regis = {
                     <input type="email" id="email" class="text-sm bg-gray-200 w-3/4 px-5 py-4 text-slate-950" placeholder="Email" style="border-radius: 20px;" />
                 </label>
 
-                <label class="block mt-0.5 ml-40 relative">
-                <span class="block text-lg font-bold text-butungu">Password</span>
-                <div class="relative w-3/4 px-2 ">
-                    <input type="password" id="password" class="text-sm bg-gray-200 pl-6 pr-14 pt-4 pb-4 text-slate-950" placeholder="Password" style="border-radius: 20px; width: 343px; text-decoration: none  !important;" id="password"/>
-                    <div class="w-10 h-10 hover:bg-[#111827] active:bg-[#111827] focus:outline-none focus:ring focus:ring-black-300 ... absolute top-1/2 -translate-y-1/2 right-4 flex items-center justify-center " style="border-radius: 5px;">
-                        <img src="./assets/icons/icon-eye.png" id="eyeIcon" class="eye-icon" alt="Eye Icon">
-                    </div>
-                </div>
-            </label>
+                <label class="block mt-6 ml-40">
+                    <span class="block text-lg font-bold text-butungu">Password</span>
+                    <input type="password" id="password" class="text-sm bg-gray-200 w-3/4 px-5 py-4 text-slate-950" placeholder="Password" style="border-radius: 20px;" />
+                </label>
 
                 <!-- Input untuk fullName -->
                 <label class="block mt-6 ml-40">
@@ -58,7 +53,6 @@ const Regis = {
   // eslint-disable-next-line no-empty-function
   async afterRender() {
     const registerForm = document.getElementById('register-form');
-    const eyeIconPassword = document.getElementById('eyeIcon');
     const footerHidden = document.querySelector('footer');
     footerHidden.classList.add('hidden');
     registerForm.addEventListener('submit', async (e) => {
@@ -106,19 +100,6 @@ const Regis = {
         // Tindakan yang sesuai jika terjadi kesalahan jaringan atau lainnya
       }
     });
-    eyeIconPassword.addEventListener('click', this.togglePasswordVisibility);
-  },
-  async togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const eyeIcon = document.getElementById('eyeIcon');
-
-    if (passwordInput.type === 'text') {
-      passwordInput.type = 'password';
-      eyeIcon.src = './assets/icons/icon-eye.png';
-    } else {
-      passwordInput.type = 'text';
-      eyeIcon.src = './assets/icons/eye look.png';
-    }
   },
 
 };
