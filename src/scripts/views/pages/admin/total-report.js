@@ -34,7 +34,6 @@ const ReportPage = {
     const loginInfoAdmin = localStorage.getItem('loginInfoAdmin');
 
     if (!loginInfoAdmin || loginInfoAdmin === 'undefined') {
-      // Pengguna belum login
       Swal.fire({
         icon: 'info',
         title: 'Anda belum login',
@@ -55,14 +54,11 @@ const ReportPage = {
       return;
     }
 
-    // Parse data loginInfoAdmin dari local storage
     const parsedLoginInfoAdmin = JSON.parse(loginInfoAdmin);
 
-    // Pengecekan token kadaluwarsa
     const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoAdmin.expiresIn);
 
     if (isTokenValid) {
-      // Token sudah kadaluwarsa
       Swal.fire({
         icon: 'info',
         title: 'Token Kadaluwarsa',
@@ -87,20 +83,51 @@ const ReportPage = {
 
     await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 10);
 
+    const TotalReport = await NyokLaporAPI.getAdminTotalReport();
+
     const ReportPageContainer = document.querySelector('#totalLaporanView');
     const SidebarContainer = document.querySelector('#sidebar');
     const ProfileAdmin = await NyokLaporAPI.getAdminProfile();
     SidebarContainer.innerHTML = createSidebarTemplate(ProfileAdmin);
-    ReportPageContainer.innerHTML = createTotalReportTemplate();
+    ReportPageContainer.innerHTML = createTotalReportTemplate(TotalReport);
 
     const isAuthenticated = localStorage.getItem('loginInfoAdmin') !== null;
     if (isAuthenticated) {
-      // Jika pengguna sudah login, tambahkan event listener untuk tombol logout
       const logoutButton = document.getElementById('logout-button');
       if (logoutButton) {
         logoutButton.addEventListener('click', this.handleLogout.bind(this));
       }
     }
+
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.close');
+
+    function openModal(imageSrc) {
+      modal.style.display = 'block';
+      modalImage.src = imageSrc;
+    }
+
+    function closeModalFunction() {
+      modal.style.display = 'none';
+    }
+
+    document.getElementById('userTableBody').addEventListener('click', (event) => {
+      const { target } = event;
+
+      if (target.tagName === 'IMG') {
+        const imageSrc = target.src;
+        openModal(imageSrc);
+      }
+    });
+
+    closeModal.addEventListener('click', closeModalFunction);
+
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModalFunction();
+      }
+    });
 
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
@@ -125,10 +152,8 @@ const ReportPage = {
   },
 
   async handleLogout() {
-    // Hapus informasi login dari localStorage
     localStorage.removeItem('loginInfoAdmin');
 
-    // Redirect ke halaman login setelah logout
     window.location.hash = '/home';
     window.location.reload();
   },

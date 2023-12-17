@@ -35,7 +35,6 @@ const AccountPage = {
     const loginInfoAdmin = localStorage.getItem('loginInfoAdmin');
 
     if (!loginInfoAdmin || loginInfoAdmin === 'undefined') {
-      // Pengguna belum login
       Swal.fire({
         icon: 'info',
         title: 'Anda belum login',
@@ -56,14 +55,11 @@ const AccountPage = {
       return;
     }
 
-    // Parse data loginInfoAdmin dari local storage
     const parsedLoginInfoAdmin = JSON.parse(loginInfoAdmin);
 
-    // Pengecekan token kadaluwarsa
     const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoAdmin.expiresIn);
 
     if (isTokenValid) {
-      // Token sudah kadaluwarsa
       Swal.fire({
         icon: 'info',
         title: 'Token Kadaluwarsa',
@@ -88,15 +84,15 @@ const AccountPage = {
 
     await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 10);
 
+    const ListReport = await NyokLaporAPI.getAdminTotalReport();
     const AccountPageContainer = document.querySelector('#akunView');
     const SidebarContainer = document.querySelector('#sidebar');
     const ProfileAdmin = await NyokLaporAPI.getAdminProfile();
     SidebarContainer.innerHTML = createSidebarTemplate(ProfileAdmin);
-    AccountPageContainer.innerHTML = createAccountTemplate();
+    AccountPageContainer.innerHTML = createAccountTemplate(ListReport);
 
     const isAuthenticated = localStorage.getItem('loginInfoAdmin') !== null;
     if (isAuthenticated) {
-      // Jika pengguna sudah login, tambahkan event listener untuk tombol logout
       const logoutButton = document.getElementById('logout-button');
       if (logoutButton) {
         logoutButton.addEventListener('click', this.handleLogout.bind(this));
@@ -126,22 +122,18 @@ const AccountPage = {
   },
 
   async handleLogout() {
-    // Hapus informasi login dari localStorage
     localStorage.removeItem('loginInfoAdmin');
 
-    // Redirect ke halaman login setelah logout
     window.location.hash = '/home';
     window.location.reload();
   },
 
   async approveUser(button) {
-  // Hapus baris dengan user ID yang sesuai dari tabel
     console.log(button);
     const userRow = button.closest('tr');
     if (userRow) {
       const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
 
-      // Konfirmasi sebelum menyetujui
       const confirmResult = await Swal.fire({
         icon: 'question',
         title: 'Konfirmasi',
@@ -154,7 +146,6 @@ const AccountPage = {
       if (confirmResult.isConfirmed) {
         userRow.remove();
 
-        // Tampilkan alert SweetAlert saat disetujui
         Swal.fire({
           icon: 'success',
           title: 'User Disetujui!',
@@ -165,13 +156,11 @@ const AccountPage = {
   },
 
   async rejectUser(button) {
-  // Hapus baris dengan user ID yang sesuai dari tabel
     console.log(button);
     const userRow = button.closest('tr');
     if (userRow) {
       const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
 
-      // Konfirmasi sebelum menolak
       const confirmResult = await Swal.fire({
         icon: 'question',
         title: 'Konfirmasi',
@@ -184,7 +173,6 @@ const AccountPage = {
       if (confirmResult.isConfirmed) {
         userRow.remove();
 
-        // Tampilkan alert SweetAlert saat ditolak
         Swal.fire({
           icon: 'error',
           title: 'User Ditolak!',

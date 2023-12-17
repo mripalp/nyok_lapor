@@ -37,7 +37,6 @@ const Admin = {
     const loginInfoAdmin = localStorage.getItem('loginInfoAdmin');
 
     if (!loginInfoAdmin || loginInfoAdmin === 'undefined') {
-      // Pengguna belum login
       Swal.fire({
         icon: 'info',
         title: 'Anda belum login',
@@ -58,14 +57,11 @@ const Admin = {
       return;
     }
 
-    // Parse data loginInfoAdmin dari local storage
     const parsedLoginInfoAdmin = JSON.parse(loginInfoAdmin);
 
-    // Pengecekan token kadaluwarsa
     const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoAdmin.expiresIn);
 
     if (isTokenValid) {
-      // Token sudah kadaluwarsa
       Swal.fire({
         icon: 'info',
         title: 'Token Kadaluwarsa',
@@ -101,10 +97,8 @@ const Admin = {
     navbarHidden.classList.add('hidden');
     const footerHidden = document.querySelector('footer');
     footerHidden.classList.add('hidden');
-    // const logoutButton = document.getElementById('logout-button');
     const isAuthenticated = localStorage.getItem('loginInfoAdmin') !== null;
     if (isAuthenticated) {
-      // Jika pengguna sudah login, tambahkan event listener untuk tombol logout
       const logoutButton = document.getElementById('logout-button');
       if (logoutButton) {
         logoutButton.addEventListener('click', this.handleLogout.bind(this));
@@ -128,7 +122,6 @@ const Admin = {
       buttonDashboard.classList.remove('active');
     });
 
-    // jumlahLaporan & rata-rata laporan;
     document.getElementById('jumlahLaporan').textContent = SummaryAdmin.reportsPerDay;
     document.getElementById('rataLaporan').textContent = Math.round(SummaryAdmin.averageSuccessfulReports);
 
@@ -144,13 +137,11 @@ const Admin = {
       { bulan: 'September' },
     ];
 
-    // Contoh data untuk grafik total pengguna
     const chartData = {
       labels: ['Januari', 'Februari', 'Maret'],
       values: [50, 75, 30],
     };
 
-    // Grafik Total Laporan per Bulan (Tahun Ini)
     const ctx = await document.getElementById('horizontalBarChart').getContext('2d');
     const existingChart = Chart.getChart(ctx);
     if (existingChart) {
@@ -170,7 +161,7 @@ const Admin = {
         }],
       },
       options: {
-        maintainAspectRatio: true, // Menonaktifkan aspek rasio
+        maintainAspectRatio: true,
         scales: {
           x: {
             beginAtZero: true,
@@ -182,7 +173,6 @@ const Admin = {
       },
     });
 
-    // Grafik Total Pengguna per Bulan
     const ctxLine = document.getElementById('waveChart').getContext('2d');
     const existingChartLine = Chart.getChart('waveChart');
     if (existingChartLine) {
@@ -222,10 +212,8 @@ const Admin = {
   },
 
   async handleLogout() {
-    // Hapus informasi login dari localStorage
     localStorage.removeItem('loginInfoAdmin');
 
-    // Redirect ke halaman login setelah logout
     window.location.hash = '/home';
     window.location.reload();
   },
