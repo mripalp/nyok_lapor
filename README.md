@@ -13,8 +13,16 @@
 * F267YB204 – Mohamad Ripal Perdiansyah - Front end - Universitas Muhammadiyah Sukabumi
 * F497YB385 – Fadli Rahmat -  Front end- Universitas Putra Indonesia Yptk Padang
 
+## How to instal start project
+```
+npm install 
+npm run start-dev
+
+```
+
 ## About
 NyokLapor adalah sebuah solusi inovatif untuk mengatasi masalah pelaporan kejadian-kejadian di sekitar kita. Dalam masyarakat, seringkali terjadi situasi yang memerlukan pelaporan cepat, seperti tawuran, kecelakaan, atau tindakan kriminal. Namun, saat ini, sistem pelaporan yang ada seringkali kurang efisien dan tidak memanfaatkan potensi teknologi dengan baik.
+
 
 ## Presentation and Demo Video
 ```
