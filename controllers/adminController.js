@@ -1,8 +1,19 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/admin');
+const Laporan = require('../models/report');
 
 const secretKey = process.env.SECRET_KEY;
+
+exports.getReports = async (req, res) => {
+    try {
+        const reports = await Laporan.find();
+        res.status(200).json({ reports });
+    } catch (error) {
+        console.error('Error fetching reports:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+};
 
 exports.register = async (req, res) => {
     try {

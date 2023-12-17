@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pengiriman Data</title>
+</head>
+<body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil token dari session storage
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTcwOGRjYmY5ZTVmOWU0ZjI1YjM4YTUiLCJyb2xlIjoidXNlciIsImlhdCI6MTcwMjc2ODI4MiwiZXhwIjoxNzAyNzcxODgyfQ.9H5r70ZjQw5KKgfHNAi2G_0Tm9eh2nUqPLte8WQDlYk';
+
+        // Setel token sebagai variabel global (opsional)
+        window.jwtToken = token;
+
+        // Tambahkan event listener untuk menanggapi pengiriman formulir
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            submitForm();
+        });
+    });
+
+    function submitForm() {
+        const nama = document.getElementById('nama').value;
+        const nomer = document.getElementById('nomer').value;
+        const gambar = document.getElementById('gambar').files[0];
+
+        // Sertakan token di header Authorization saat formulir disubmit
+        const formData = new FormData();
+        formData.append('nama', nama);
+        formData.append('nomer', nomer);
+        formData.append('gambar', gambar);
+
+        const headers = new Headers();
+        headers.append('Authorization', `Bearer ${window.jwtToken}`);
+
+        const requestOptions = {
+            method: 'POST',
+            headers: headers,
+            body: formData,
+            redirect: 'follow'
+        };
+
+        // Ganti URL sesuai dengan endpoint server Anda
+        const url = 'http://localhost:2700/user/report';
+
+        // Kirim permintaan POST menggunakan Fetch API
+        fetch(url, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
+<form>
+    <label for="nama">Nama:</label>
+    <input type="text" id="nama" name="nama" required><br>
+
+    <label for="nomer">Nomer:</label>
+    <input type="text" id="nomer" name="nomer" required><br>
+
+    <label for="gambar">Pilih Gambar:</label>
+    <input type="file" id="gambar" name="gambar" accept="image/*" required><br>
+
+    <button type="button" id="submitBtn">Kirim</button>
+</form>
+
+</body>
+</html>

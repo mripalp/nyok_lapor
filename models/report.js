@@ -1,12 +1,23 @@
-// models/report.js
 const mongoose = require('mongoose');
 
+
 const reportSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    status: String,
-    // Anda dapat menambahkan bidang lain sesuai kebutuhan aplikasi Anda
-}, { timestamps: true });
+    judul: { type: String, required: true },
+    deskripsi: { type: String, required: true },
+    tanggalkejadian: { type: Date, required: true },
+    image: { type: String, required: true },
+    longititude: { type: String, required: true},
+    latitude: { type: String, required: true},
+    status: { type: String, required: true },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to the user who created the report
+});
 
-const Report = mongoose.model('Report', reportSchema);
+//reportSchema.index({ lokasi: '2dsphere' });
 
-module.exports = Report;
+const Laporan = mongoose.model('Laporan', reportSchema);
+
+module.exports = Laporan;
+
+
+
+
