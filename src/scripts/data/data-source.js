@@ -52,6 +52,19 @@ class NyokLaporAPI {
     return expirationTime < currentTime;
   }
 
+  static async getAdminTotalReport() {
+    const url = API_ENDPOINT.ADMIN_REPORT;
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${this.getAccessTokenAdmin()}`,
+      },
+    };
+
+    const response = await this.fetchData(url, options);
+    return response.reports;
+  }
+
   static async getAdminSummary() {
     const url = API_ENDPOINT.ADMIN_SUMMARY;
     const options = {
@@ -73,6 +86,16 @@ class NyokLaporAPI {
   static getAccessTokenAdmin() {
     const loginInfoAdmin = JSON.parse(localStorage.getItem('loginInfoAdmin')) || {};
     return loginInfoAdmin.token || '';
+  }
+
+  static formattedDate(inputDateString) {
+    const inputDate = new Date(inputDateString);
+
+    const year = inputDate.getFullYear();
+    const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = inputDate.getDate().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
   }
 }
 

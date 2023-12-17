@@ -8,6 +8,8 @@ const API_ENDPOINT = {
   ADMIN_LOGIN: `${CONFIG.BASE_URL}/admin/login`,
   ADMIN_PROFILE: `${CONFIG.BASE_URL}/admin/profile`,
   ADMIN_SUMMARY: `${CONFIG.BASE_URL}/admin/summary`,
+  ADMIN_REPORT: `${CONFIG.BASE_URL}/admin/report`,
+  ADMIN_IMAGE_REPORT: `${CONFIG.BASE_URL}`,
 };
 
 export default API_ENDPOINT;
