@@ -5,30 +5,49 @@ class NavBar extends HTMLElement {
 
   render() {
     this.innerHTML = `
-     <nav class="py-10 px-4 font-Poppins ">
+     <nav class="py-4 px-4 mb-12 font-Poppins shadow-lg shadow-gray-300">
     <div class="container mx-auto">
         <div class="flex items-center justify-between">
-            <img src="./assets/icons/nyoklapor-icon.png" class="h-12 w-21.5  ">
-            <div class=" w-96 pt-4 pb-4  rounded-full hidden lg:block bg-navBlur bg-opacity-5 lg:w-1/2">
-                <ul class="flex gap-16 justify-center font-normal">
-                    <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="#/home">HOME</a>
+            <img src="./assets/icons/nyoklapor-icon.png" alt="logo nyok-lapor" class="h-[60px] w-[108px]  ">
+            <div class=" w-96 pt-4 pb-4  rounded-full hidden lg:block lg:w-1/2">
+                <ul class="flex gap-16 justify-center font-bold font-Poppins">
+                    <li class="text-butungu text-sm">
+                        <a class="nav hover:border-b-2" href="#/home">HOME</a>
                     </li>
-                    <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="">ABOUT US</a>
+                    <li class="text-butungu text-sm">
+                        <a class="nav hover:border-b-2" href="#aboutMe">ABOUT US</a>
                     </li>
-                    <li class="text-black text-xs">
-                        <a class="nav hover:text-white hover:opacity-100" href="#/laporan">LAPORAN</a>
+                    <li class="text-butungu text-sm">
+                        <a class="nav hover:border-b-2" href="#/laporan">LAPORAN</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="w-52 h-10 flex md:w-auto md:h-auto gap-2  sm:w-auto sm:h-auto">
-                <div class="flex ">
-                <button class="grow bg-white px-7 py-3 font-bold text-merah text-opacity-90 rounded-l-2xl text-xs">LOG IN</button>
-                <button class="grow bg-merah bg-opacity-90 px-7 py-3 font-bold text-white rounded-r-2xl text-xs">SIGN UP</button>
+            <div class="w-52 h-10 flex md:w-auto md:h-auto gap-2 sm:w-auto sm:h-auto" id="navbar-login">
+            <div class="flex items-center">
+                <!-- Tombol Login dan Signup -->
+                <button class="grow px-7 py-3 text-sm" id="loginButton">
+                    <a class="nav hover:border-b-2 hover:border-b-butungu font-bold text-butungu" href="?#/loginuser">LOG IN</a>
+                </button>
+                <button class="grow px-7 py-3 text-sm" id="signupButton">
+                    <a class="nav hover:border-b-2 hover:border-b-butungu font-bold text-butungu" href="#/registeruser">SIGN
+                    UP</a>
+                </button>
+
+                <!-- Elemen untuk Foto Profil dan Logout -->
+                <div class="hidden items-center" id="userProfile">
+                    <span id="userName"></span>
+                    <img src="./assets/homepage/blank-profile.png" alt="Profile" class="rounded-full w-8 h-8 mx-4">
+                    <button class="grow px-2 py-5 text-sm" id="logoutButton">
+                        <a class="hover:border-b-2 p-3 rounded-lg hover:bg-butungu font-bold hover:text-white text-butungu">LOGOUT</a>
+                    </button>
                 </div>
-                <button  id="hamburgerButton"><ion-icon name="menu" class="text-3xl cursor-pointer  lg:hidden"></ion-icon></button>
+
+                <!-- Tombol Hamburger -->
+                <button id="hamburgerButton">
+                     <ion-icon name="menu" class="text-3xl cursor-pointer lg:hidden" aria-label="hamburger"></ion-icon>
+                </button>
+             </div>
             </div>
         </div>
     </div>
