@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable eol-last */
 import API_ENDPOINT from '../global/api-endpoints';
 
 class NyokLaporAPI {
@@ -9,6 +7,20 @@ class NyokLaporAPI {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${this.getAccessTokenAdmin()}`,
+      },
+    };
+
+    const response = await this.fetchData(url, options);
+    return response.profile;
+  }
+
+  // eslint-disable-next-line no-dupe-class-members
+  static async getUserProfile() {
+    const url = API_ENDPOINT.USER_PROFILE;
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${this.getAccessTokenUser()}`,
       },
     };
 
