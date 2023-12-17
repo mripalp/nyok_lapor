@@ -57,7 +57,7 @@ db.once('open', () => {
     console.log('Connected to MongoDB');
 });
 
-const PORT = process.env.PORT || 2700;
+const PORT = process.env.PORT;
 
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
