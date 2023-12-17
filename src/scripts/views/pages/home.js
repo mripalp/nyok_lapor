@@ -1,6 +1,10 @@
+import Swal from 'sweetalert2/dist/sweetalert2.all.min';
+import NyokLaporAPI from '../../data/data-source';
+
 const Home = {
   async render() {
     return `
+    <div id="navbar"></div>
     <section class="sm:p-4 md:p-6 lg:p-8">
     <div class="container mx-auto">
         <div class="grid grid-cols-12 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
@@ -196,9 +200,9 @@ const Home = {
             <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
         </div>
         <div class="flex justify-center items-center mt-2 gap-2">
-        <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
-        <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
-       <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
+        <a href="https://github.com/mripalp/" ><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
+        <a href="https://www.instagram.com/"><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
+       <a href="https://www.linkedin.com/in/mohamadripalperdiansyah/"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
           </div>
     </div>
 
@@ -211,9 +215,9 @@ const Home = {
             <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
         </div>
         <div class="flex justify-center items-center mt-2 gap-2">
-        <a><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
-        <a><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
-       <a><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
+        <a hre="https://github.com/Hazron"><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
+        <a href="https://www.linkedin.com/in/hazron-redian-292757214/"><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
+       <a href="https://www.instagram.com/lredianl/"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
           </div>
     </div>
     </div>
@@ -223,8 +227,51 @@ const Home = {
   },
 
   async afterRender() {
-    // Fungsi ini akan dipanggil setelah render()
-    //
+    const loginInfoUser = localStorage.getItem('loginInfoUser');
+
+    if (typeof loginInfoUser === 'string') {
+      const dataProfile = await NyokLaporAPI.getUserProfile();
+
+      const loginButton = document.getElementById('loginButton');
+      const signupButton = document.getElementById('signupButton');
+      const userProfile = document.getElementById('userProfile');
+      const userName = document.getElementById('userName');
+      const logoutButton = document.getElementById('logoutButton');
+
+      loginButton.style.display = 'none';
+      signupButton.style.display = 'none';
+
+      userProfile.style.display = 'flex';
+
+      userName.textContent = dataProfile.fullName;
+
+      logoutButton.addEventListener('click', () => {
+        this.handleLogout();
+      });
+    }
+  },
+
+  async handleLogout() {
+    // Tampilkan konfirmasi sebelum logout
+    Swal.fire({
+      title: 'Konfirmasi',
+      text: 'Apakah Anda yakin ingin keluar?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Keluar',
+      cancelButtonText: 'Batal',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+      // Hapus informasi login dari localStorage
+        localStorage.removeItem('loginInfoUser');
+
+        // Redirect ke halaman login setelah logout
+        window.location.hash = '/home';
+        window.location.reload();
+      }
+    });
   },
 };
 

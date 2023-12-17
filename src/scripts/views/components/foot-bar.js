@@ -13,8 +13,8 @@ class FootBar extends HTMLElement {
         </div>
         <div class="flex flex-col items-center lg:items-start lg:gap-8">
             <p class="text-sm mt-4 lg:mt-0">Services</p>
-            <p class="text-sm">Email Campaign</p>
-            <p class="text-sm">Branding</p>
+            <p class="text-sm">nyoklapor@gmail.com</p>
+            <p class="text-sm">NyokLapor</p>
             <p class="text-sm">Offline</p>
         </div>
         <div class="flex flex-col items-center lg:items-start lg:gap-8">
