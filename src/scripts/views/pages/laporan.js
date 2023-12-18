@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2/dist/sweetalert2.all.min';
-import NyokLaporAPI from '../../data/data-source';
+import API_ENDPOINT from '../../global/api-endpoints';
+import NyokLaporAPIs from '../../data/data-source';
 
 const Laporan = {
   async render() {
@@ -18,33 +19,23 @@ const Laporan = {
       <div class="flex justify-center">
         <div class=" lg:w-[1000px] relative bg-white rounded-[20px] shadow-lg shadow-slate-300 border">
           <!-- Konten atau isi yang ingin Anda masukkan ke dalam kotak ini -->
-          <form class="p-4 lg:p-8 flex flex-col items-center">
-            <input type="text" placeholder="Judul Laporan * " id="judul_laporan" name="judul_laporan" class="text-black my-7 text-lg h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 sm:text-sm focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
+          <form id="reportForm" class="p-4 lg:p-8 flex flex-col items-center">
+            <input type="text" placeholder="Judul Laporan * " id="judul" name="judul" class="text-black my-7 text-lg h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 sm:text-sm focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
             
-            <input type="text" placeholder="Rincian Laporan * " id="rincian_laporan" name="rincian_laporan" class="text-black my-7 text-lg h-[222px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
+            <input type="text" placeholder="Rincian Laporan * " id="deskripsi" name="deskripsi" class="text-black my-7 text-lg h-[222px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
             
-            <input type="date" placeholder="Tanggal Kejadian * " id="tanggal_kejadian" name="tanggal_kejadian" class="text-black my-7 text-lg h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
+            <input type="date" placeholder="Tanggal Kejadian * " id="tanggalkejadian" name="tanggalkejadian" class="text-black my-7 text-lg h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
             
             <button id="lokasi_kejadian" class="text-black my-7 text-lg h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border- focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2 transition duration-300 ease-in-out hover:bg-gray-200 hover:border-gray-400" type="button">
             Tampilkan Lokasi (Latitude & Longitude) *
           </button>
                      
-            <input type="file" class="text-black my-7 text-2xl h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
+            <input type="file" id="image" class="text-black my-7 text-2xl h-[74px] font-normal font-Poppins border drop-shadow-sm shadow-slate-300 placeholder-slate-400 focus:outline-none focus:border-butungu focus:ring-butungu border-gray-400 border-spacing-1 focus:ring-1 px-2 py-1 w-full lg:max-w-[800px] mb-2">
             <div class="text-black text-base font-normal font-['Poppins']">Upload Lampiran (Max 2 MB)</div>
             
             <button id="submitBtn" class="lg:w-96 h-16 px-36 pt-5 pb-4 hover:bg-sky-900 bg-butungu border-gray-400 border-spacing-1 shadow justify-start items-center inline-flex mt-7">
               <div class="text-center text-white text-xl font-bold font-['Poppins']" id="laporButton">NYOKLAPOR!</div>
             </button>
-            <div id="confirmationPopup" class="w-96 h-60 relative bg-gray-800" style="display: none;">
-              <div class="left-[118px] top-[61px] absolute text-stone-300 text-xl font-bold font-['Poppins']">Apakah kamu yakin ?</div>
-              <div class="w-96 h-px left-0 top-[132px] absolute border-2 border-black border-opacity-90"></div>
-              <div class="px-5 pt-1.5 pb-2 left-[138px] top-[160px] absolute bg-butungu bg-opacity-90 rounded-lg justify-center items-center inline-flex">
-                <div class="text-stone-300 text-base font-bold font-['Poppins']">TIDAK</div>
-              </div>
-              <div class="w-20 px-7 pt-1.5 pb-2 left-[227px] top-[160px] absolute bg-white rounded-lg justify-center items-center inline-flex">
-                <div class="text-butbg-butungu text-opacity-90 text-base font-bold font-['Poppins']">IYA</div>
-              </div>
-            </div>
           </form>
         </div>
       </div>
@@ -57,7 +48,6 @@ const Laporan = {
     const loginInfoUser = localStorage.getItem('loginInfoUser');
 
     if (!loginInfoUser || loginInfoUser === 'undefined') {
-      // Pengguna belum login
       Swal.fire({
         icon: 'info',
         title: 'Anda belum login',
@@ -74,18 +64,13 @@ const Laporan = {
           window.location.href = '#/home';
         }
       });
-
       return;
     }
 
-    // Parse data loginInfoUser dari local storage
     const parsedLoginInfoUser = JSON.parse(loginInfoUser);
-
-    // Pengecekan token kadaluwarsa
-    const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoUser.expiresIn);
+    const isTokenValid = await NyokLaporAPIs.isTokenValid(parsedLoginInfoUser.expiresIn);
 
     if (isTokenValid) {
-      // Token sudah kadaluwarsa
       Swal.fire({
         icon: 'info',
         title: 'Token Kadaluwarsa',
@@ -102,37 +87,100 @@ const Laporan = {
           window.location.href = '#/home';
         }
       });
-
-      // eslint-disable-next-line no-useless-return
       return;
     }
 
     const locationButton = document.getElementById('lokasi_kejadian');
+    let latitude = null;
+    let longititude = null;
+
+    function showPosition(position) {
+      latitude = position.coords.latitude;
+      longititude = position.coords.longitude;
+
+      const mapLink = `https://www.google.com/maps?q=${latitude},${longititude}`;
+      const mapAnchor = document.createElement('a');
+      mapAnchor.href = mapLink;
+      mapAnchor.target = '_blank';
+      mapAnchor.textContent = `Latitude: ${latitude}, Longitude: ${longititude} (View on Maps)`;
+
+      locationButton.innerHTML = '';
+      locationButton.appendChild(mapAnchor);
+    }
 
     locationButton.addEventListener('click', () => {
       if (navigator.geolocation) {
-        // eslint-disable-next-line no-use-before-define
         navigator.geolocation.getCurrentPosition(showPosition);
       } else {
         locationButton.textContent = 'Geolocation is not supported by this browser.';
       }
     });
 
-    function showPosition(position) {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
+    const submitButton = document.getElementById('reportForm');
+    submitButton.addEventListener('submit', async (evt) => {
+      evt.preventDefault();
 
-      const mapLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
-      const mapAnchor = document.createElement('a');
-      mapAnchor.href = mapLink;
-      mapAnchor.target = '_blank';
-      mapAnchor.textContent = `Latitude: ${latitude}, Longitude: ${longitude} (Lihat di Maps)`;
+      const judul = document.getElementById('judul').value;
+      const deskripsi = document.getElementById('deskripsi').value;
+      const tanggalkejadian = document.getElementById('tanggalkejadian').value;
+      const image = document.getElementById('image').files[0]; // Mengambil file yang diunggah
 
-      locationButton.innerHTML = '';
-      locationButton.appendChild(mapAnchor);
+      if (!judul || !deskripsi || !tanggalkejadian || !image) {
+        // eslint-disable-next-line no-alert
+        alert('Semua kolom harus diisi dan file harus dipilih!');
+      } else {
+        const userData = new FormData(); // Membuat objek FormData
 
-      // Lakukan apa pun dengan nilai latitude dan longitude yang Anda dapatkan di sini
-    }
+        userData.append('judul', judul);
+        userData.append('deskripsi', deskripsi);
+        userData.append('tanggalkejadian', tanggalkejadian);
+        userData.append('longititude', longititude); // Pastikan nilai longititude sudah terisi
+        userData.append('latitude', latitude); // Pastikan nilai latitude sudah terisi
+        userData.append('image', image); // Menambahkan file ke FormData
+
+        try {
+          const { token } = parsedLoginInfoUser;
+          const headers = {
+            Authorization: `Bearer ${token}`,
+          };
+
+          const response = await fetch(API_ENDPOINT.USER_REPORT, {
+            method: 'POST',
+            headers,
+            body: userData, // Menggunakan objek FormData sebagai body request
+          });
+
+          if (response.ok) {
+            // Penanganan jika pengiriman sukses
+            Swal.fire({
+              icon: 'success',
+              title: 'Laporan Berhasil',
+              text: 'Anda telah berhasil melaporkan!',
+            }).then(() => {
+              window.location.hash = '/laporan';
+            });
+          } else {
+            // Penanganan jika terjadi kesalahan
+            const responseData = await response.json();
+            const errorMessage = responseData.message || response.statusText;
+
+            console.error('Gagal melaporkan', errorMessage);
+            Swal.fire({
+              icon: 'error',
+              title: 'Gagal Melaporkan',
+              text: errorMessage,
+            });
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal Melaporkan',
+            text: 'Terjadi kesalahan saat mengirim data.',
+          });
+        }
+      }
+    });
   },
 };
 

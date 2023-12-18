@@ -215,7 +215,7 @@ const Home = {
             <h3 class="text-lg text-section1 font-bold text-opacity-70 ">Front End-Developer</h3>
         </div>
         <div class="flex justify-center items-center mt-2 gap-2">
-        <a hre="https://github.com/Hazron"><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
+        <a href="https://github.com/Hazron"><img src="./assets/icons/github.png" alt="logo github" class="w-[35px] h-[35px]" href="" ></a>  
         <a href="https://www.linkedin.com/in/hazron-redian-292757214/"><img src="./assets/icons/ig.png" alt="logo ig" class="w-[35px] h-[35px]" href="" ></a>  
        <a href="https://www.instagram.com/lredianl/"><img src="./assets/icons/linkin.png" alt="logo linkin" class="w-[35px] h-[35px]" href=""></a>
           </div>
