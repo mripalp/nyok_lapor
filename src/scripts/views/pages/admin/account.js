@@ -99,6 +99,17 @@ const AccountPage = {
       }
     }
 
+    document.getElementById('userTableBody').addEventListener('click', (event) => {
+      const { target } = event;
+      console.log(target);
+
+      if (target.tagName === 'BUTTON' && target.classList.contains('bg-green-500')) {
+        this.approveUser(target);
+      } else if (target.tagName === 'BUTTON' && target.classList.contains('bg-red-500')) {
+        this.rejectUser(target);
+      }
+    });
+
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
     const footerHidden = document.querySelector('footer');

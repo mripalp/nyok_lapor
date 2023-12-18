@@ -158,7 +158,7 @@ const createTotalReportTemplate = (TotalReport) => `
                         </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white divide-y divide-gray-200 text-center">
+                <tbody class="bg-white divide-y divide-gray-200 text-center" id="userTableBody">
                     ${TotalReport.map((user, index) => `
                         <tr data-id="${index + 1}">
                             <td class="px-6 py-4 whitespace-nowrap border">${index + 1}</td>
