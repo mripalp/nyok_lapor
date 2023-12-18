@@ -122,10 +122,23 @@ const AccountPage = {
   },
 
   async handleLogout() {
-    localStorage.removeItem('loginInfoAdmin');
+    Swal.fire({
+      title: 'Konfirmasi',
+      text: 'Apakah Anda yakin ingin keluar?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya, Keluar',
+      cancelButtonText: 'Batal',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('loginInfoAdmin');
 
-    window.location.hash = '/home';
-    window.location.reload();
+        window.location.hash = '/home';
+        window.location.reload();
+      }
+    });
   },
 
   async approveUser(button) {
