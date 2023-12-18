@@ -9,6 +9,8 @@ import AOS from 'aos';
 import App from './views/app';
 import 'aos/dist/aos.css';
 
+import swRegister from './utils/sw-register';
+
 window.Alpine = Alpine;
 
 Alpine.start();
@@ -31,4 +33,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', async () => {
   app.renderPage();
+  await swRegister();
 });

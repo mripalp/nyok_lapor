@@ -23,7 +23,7 @@ const AccountPage = {
             </div>
 
             <!-- Tampilan Dashboard -->
-            <div id="akunView">
+            <div id="akunView" class="bg-white p-8 rounded-md shadow-md w-full h-screen">
             </div>
         </div>
     </div>
@@ -35,7 +35,6 @@ const AccountPage = {
     const loginInfoAdmin = localStorage.getItem('loginInfoAdmin');
 
     if (!loginInfoAdmin || loginInfoAdmin === 'undefined') {
-      // Pengguna belum login
       Swal.fire({
         icon: 'info',
         title: 'Anda belum login',
@@ -46,24 +45,21 @@ const AccountPage = {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/login';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/home';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
         }
       });
 
       return;
     }
 
-    // Parse data loginInfoAdmin dari local storage
     const parsedLoginInfoAdmin = JSON.parse(loginInfoAdmin);
 
-    // Pengecekan token kadaluwarsa
     const isTokenValid = await NyokLaporAPI.isTokenValid(parsedLoginInfoAdmin.expiresIn);
 
     if (isTokenValid) {
-      // Token sudah kadaluwarsa
       Swal.fire({
         icon: 'info',
         title: 'Token Kadaluwarsa',
@@ -74,27 +70,29 @@ const AccountPage = {
       }).then((result) => {
         if (result.isConfirmed) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/login';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
+          window.location.reload();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           localStorage.removeItem('loginInfoAdmin');
-          window.location.hash = '#/home';
+          window.location.replace(`${window.location.origin}/?#/loginadmin`);
+          window.location.reload();
         }
       });
 
       return;
     }
 
-    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 3);
+    await NyokLaporAPI.updateActivityAndTokenInfo('Admin', 10);
 
+    const ListReport = await NyokLaporAPI.getAdminTotalReport();
     const AccountPageContainer = document.querySelector('#akunView');
     const SidebarContainer = document.querySelector('#sidebar');
     const ProfileAdmin = await NyokLaporAPI.getAdminProfile();
     SidebarContainer.innerHTML = createSidebarTemplate(ProfileAdmin);
-    AccountPageContainer.innerHTML = createAccountTemplate();
+    AccountPageContainer.innerHTML = createAccountTemplate(ListReport);
 
     const isAuthenticated = localStorage.getItem('loginInfoAdmin') !== null;
     if (isAuthenticated) {
-      // Jika pengguna sudah login, tambahkan event listener untuk tombol logout
       const logoutButton = document.getElementById('logout-button');
       if (logoutButton) {
         logoutButton.addEventListener('click', this.handleLogout.bind(this));
@@ -103,6 +101,8 @@ const AccountPage = {
 
     const navbarHidden = document.querySelector('nav');
     navbarHidden.classList.add('hidden');
+    const footerHidden = document.querySelector('footer');
+    footerHidden.classList.add('hidden');
     const dashboardButton = document.getElementById('dashboard-button');
     const totalLaporanButton = document.getElementById('total-laporan-button');
     const buttonAccount = document.querySelector('#sidebar button[data-view="akun"]');
@@ -122,12 +122,64 @@ const AccountPage = {
   },
 
   async handleLogout() {
-    // Hapus informasi login dari localStorage
     localStorage.removeItem('loginInfoAdmin');
 
-    // Redirect ke halaman login setelah logout
     window.location.hash = '/home';
     window.location.reload();
+  },
+
+  async approveUser(button) {
+    console.log(button);
+    const userRow = button.closest('tr');
+    if (userRow) {
+      const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
+
+      const confirmResult = await Swal.fire({
+        icon: 'question',
+        title: 'Konfirmasi',
+        text: `Apakah Anda yakin ingin menyetujui user dengan email ${userEmail}?`,
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Setujui',
+        cancelButtonText: 'Batal',
+      });
+
+      if (confirmResult.isConfirmed) {
+        userRow.remove();
+
+        Swal.fire({
+          icon: 'success',
+          title: 'User Disetujui!',
+          text: `User dengan email ${userEmail} telah disetujui dan dihapus dari daftar.`,
+        });
+      }
+    }
+  },
+
+  async rejectUser(button) {
+    console.log(button);
+    const userRow = button.closest('tr');
+    if (userRow) {
+      const userEmail = userRow.querySelector('td:nth-child(3)').innerText;
+
+      const confirmResult = await Swal.fire({
+        icon: 'question',
+        title: 'Konfirmasi',
+        text: `Apakah Anda yakin ingin menolak user dengan email ${userEmail}?`,
+        showCancelButton: true,
+        confirmButtonText: 'Ya, Tolak',
+        cancelButtonText: 'Batal',
+      });
+
+      if (confirmResult.isConfirmed) {
+        userRow.remove();
+
+        Swal.fire({
+          icon: 'error',
+          title: 'User Ditolak!',
+          text: `User dengan email ${userEmail} ditolak dan dihapus dari daftar.`,
+        });
+      }
+    }
   },
 };
 
