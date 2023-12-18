@@ -131,7 +131,7 @@
 #navigationDrawer.open {
   bottom: 1%;
 }
-  
+
 li a:hover {
   border-bottom: 2px solid #fff;
 }
@@ -142,7 +142,7 @@ li a:active {
 
 .nav:active,
 .nav:focus {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #164863;
 }
 
 #navigationDrawer a {
@@ -157,13 +157,14 @@ li a:active {
 
 @media (max-width: 768px) {
   .card {
-      width: calc(50% - 2rem); /* Two cards in a row */
-      margin: 1rem;
+    width: calc(50% - 2rem);
+    /* Two cards in a row */
+    margin: 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .card {
-      width: calc(100% - 2rem);
+    width: calc(100% - 2rem);
   }
 }
