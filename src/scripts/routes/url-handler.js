@@ -1,15 +1,19 @@
 const UrlHandler = {
   parseActiveUrlWithCombiner() {
     const url = window.location.hash.slice(1).toLowerCase();
+    // eslint-disable-next-line no-underscore-dangle
     const splitedUrl = this._urlSplitter(url);
+    // eslint-disable-next-line no-underscore-dangle
     return this._urlCombiner(splitedUrl);
   },
 
   parseActiveUrlWithoutCombiner() {
     const url = window.location.hash.slice(1).toLowerCase();
+    // eslint-disable-next-line no-underscore-dangle
     return this._urlSplitter(url);
   },
 
+  // eslint-disable-next-line no-underscore-dangle
   _urlSplitter(url) {
     const urlsSplits = url.split('/');
     return {
@@ -19,9 +23,11 @@ const UrlHandler = {
     };
   },
 
-  _urlCombiner(splitUrl) {
-    const { resource, id, verb } = splitUrl;
-    return `/${resource || ''}${id ? '/:id' : ''}${verb ? `/${verb}` : ''}`;
+  // eslint-disable-next-line no-underscore-dangle
+  _urlCombiner(splitedUrl) {
+    return (splitedUrl.resource ? `/${splitedUrl.resource}` : '/')
+        + (splitedUrl.id ? '/:id' : '')
+        + (splitedUrl.verb ? `/${splitedUrl.verb}` : '');
   },
 };
 

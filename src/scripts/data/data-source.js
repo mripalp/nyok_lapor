@@ -14,6 +14,20 @@ class NyokLaporAPI {
     return response.profile;
   }
 
+  // eslint-disable-next-line no-dupe-class-members
+  static async getUserProfile() {
+    const url = API_ENDPOINT.USER_PROFILE;
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${this.getAccessTokenUser()}`,
+      },
+    };
+
+    const response = await this.fetchData(url, options);
+    return response.profile;
+  }
+
   static async fetchData(url, options = {}) {
     return fetch(url, options)
       .then((response) => {

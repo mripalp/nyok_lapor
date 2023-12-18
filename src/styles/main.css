@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nosifer&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,900&display=swap');
+
 #sidebar {
   width: 260px;
   min-height: 100vh;
@@ -22,7 +24,6 @@
 
 #sidebar button.active a {
   color: white;
-
 }
 
 .dashboard-cards {
@@ -35,13 +36,11 @@
   width: 100%;
 }
 
-
 #dashboardView {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 16px;
 }
-
 
 #akunView,
 #totalLaporanView {
@@ -119,4 +118,52 @@
 
 .pagination button:hover {
   background-color: #45a049;
+}
+
+#navigationDrawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  transition: bottom 0.3s ease-in-out;
+}
+
+#navigationDrawer.open {
+  bottom: 1%;
+}
+  
+li a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+li a:active {
+  border-bottom: 2px solid white;
+}
+
+.nav:active,
+.nav:focus {
+  border-bottom: 2px solid red;
+}
+
+#navigationDrawer a {
+  transition: color 0.1s ease-in-out, border-bottom 0.1s ease-in-out;
+  border-bottom: 2px solid transparent;
+}
+
+#navigationDrawer a:hover,
+#navigationDrawer a:active {
+  border-bottom: 2px solid #000;
+}
+
+@media (max-width: 768px) {
+  .card {
+      width: calc(50% - 2rem); /* Two cards in a row */
+      margin: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+      width: calc(100% - 2rem);
+  }
 }
