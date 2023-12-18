@@ -12,7 +12,7 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     clean: true,
   },
   module: {
@@ -37,7 +37,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, 'src/public/'),
-          to: path.resolve(__dirname, 'dist/assets'),
+          to: path.resolve(__dirname, 'public/assets'),
         },
       ],
     }),
