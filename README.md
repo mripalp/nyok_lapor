@@ -26,7 +26,8 @@ NyokLapor adalah sebuah solusi inovatif untuk mengatasi masalah pelaporan kejadi
 
 ## Presentation and Demo Video
 ```
-
+http://bit.ly/4765vTn
+https://bit.ly/3TzCqwF
 ```
 ## Wireframe && Mock-Up
 ```
